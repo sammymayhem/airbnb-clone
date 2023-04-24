@@ -1,3 +1,5 @@
+'use client';
+
 import { IconType } from "react-icons";
 
 interface ButtonProps {
@@ -18,7 +20,10 @@ const Button: React.FC<ButtonProps> = ({
     icon: Icon,
 }) => {
   return (
-    <button className={`
+    <button 
+    onClick={onClick}
+    disabled={disabled}
+    className={`
         relative 
         disabled:opacity-70 
         disabled:cursor-not-allowed
