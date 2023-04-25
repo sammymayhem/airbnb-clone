@@ -3,7 +3,9 @@ import { Nunito } from 'next/font/google';
 import Navbar from './components/Navbar/Navbar';
 import ClientOnly from './components/ClientOnly';
 import RegisterModal from './components/Modals/RegisterModal';
+import LoginModal from './components/Modals/LoginModal';
 import ToasterProvider from './providers/ToasterProvider';
+import getCurrentUser from './actions/getCurrentUser';
 
 export const metadata = {
   title: 'Airbnb Clone',
@@ -15,18 +17,20 @@ const font = Nunito({
   weight: '400',
 })
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const currentUser = await getCurrentUser();
   return (
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
-          <Navbar />
+          <Navbar currentUser={currentUser} />
         </ClientOnly>
         {children}
         </body>
