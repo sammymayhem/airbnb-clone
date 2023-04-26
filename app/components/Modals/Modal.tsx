@@ -32,11 +32,11 @@ const Modal: React.FC<ModalProps> = ({
 
 const [showModal, setShowModal] = useState(isOpen);
 
-useEffect(() => {
+useEffect(() => {                           // Open modal
     setShowModal(isOpen);
 }, [isOpen]);
 
-const handleClose = useCallback(() => {
+const handleClose = useCallback(() => {     // Handle closing the modal
     if (disabled) {
         return;
     }
@@ -44,10 +44,10 @@ const handleClose = useCallback(() => {
     setShowModal(false);
     setTimeout(() => {
         onClose();
-    }, 300); //Dealy onClose for animation to show, which is exactly 300ms
+    }, 300);                                // Dealy onClose for animation to show, which is exactly 300ms
 }, [disabled, onClose]);
 
-const handleSubmit = useCallback(() => {
+const handleSubmit = useCallback(() => {    // Handle submitting in form
     if (disabled) {
         return;
     }

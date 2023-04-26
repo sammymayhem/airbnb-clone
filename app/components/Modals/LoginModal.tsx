@@ -22,11 +22,11 @@ const LoginModal = () => {
     const router = useRouter();
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
-    const [ isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const { 
-        register, 
-        handleSubmit, 
+    const {
+        register,
+        handleSubmit,
         formState: {
             errors,
 
@@ -38,26 +38,26 @@ const LoginModal = () => {
         }
     })
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => { 
         setIsLoading(true);
 
         signIn('credentials', {
             ...data,
             redirect: false,
         })
-        .then((callback) => {
-            setIsLoading(false);
+            .then((callback) => {
+                setIsLoading(false);
 
-            if (callback?.ok) {
-                toast.success('Logged In');
-                router.refresh();  //Updates all active values
-                loginModal.onClose();
-            }
+                if (callback?.ok) {
+                    toast.success('Logged In');     // Log in success alert
+                    router.refresh();               // Updates all active values
+                    loginModal.onClose();           // Close Login modal
+                }
 
-            if (callback?.error) {
-                toast.error(callback.error);
-            }
-        })
+                if (callback?.error) {
+                    toast.error(callback.error);
+                }
+            })
     }
 
     const bodyContent = (
@@ -84,8 +84,8 @@ const LoginModal = () => {
     const footerContent = (
         <div className='flex flex-col gap-4 mt-3'>
             <hr />
-            <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => signIn('google')}/>
-            <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => signIn('github')}/>
+            <Button outline label='Continue with Google' icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button outline label='Continue with Github' icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='justify-center flex flex-row items-center gap-2'>
                     <div>
@@ -100,18 +100,18 @@ const LoginModal = () => {
 
     )
 
-  return (
-    <Modal 
-        disabled={isLoading}
-        isOpen={loginModal.isOpen}
-        title='Login'
-        actionLabel='Continue'
-        onClose={loginModal.onClose}
-        onSubmit={handleSubmit(onSubmit)}
-        body={bodyContent}
-        footer={footerContent}
-         />
-  )
+    return (
+        <Modal
+            disabled={isLoading}
+            isOpen={loginModal.isOpen}
+            title='Login'
+            actionLabel='Continue'
+            onClose={loginModal.onClose}
+            onSubmit={handleSubmit(onSubmit)}
+            body={bodyContent}
+            footer={footerContent}
+        />
+    )
 }
 
 export default LoginModal;

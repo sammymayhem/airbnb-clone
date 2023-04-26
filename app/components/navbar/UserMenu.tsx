@@ -23,7 +23,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = useCallback(() => {
+  const toggleOpen = useCallback(() => {        // Command to toggle open the menu on the top right
     setIsOpen((value) => !value);
   }, [])
 
@@ -36,7 +36,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             <div onClick={toggleOpen} className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
                 <AiOutlineMenu />
                 <div className='hidden md:block'>
-                    <Avatar src={currentUser?.image} />
+                    <Avatar src={currentUser?.image} />    
                 </div>
             </div>
         </div>

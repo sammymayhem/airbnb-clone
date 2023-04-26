@@ -11,6 +11,7 @@ import { GiBarn, GiBoatFishing, GiCactus, GiCastle, GiCaveEntrance, GiForestCamp
 import { MdOutlineVilla } from 'react-icons/md';
 import { usePathname, useSearchParams } from "next/navigation";
 
+// Array of categories for the top bar
 export const categories = [
     {
         label: 'Beach',
@@ -90,30 +91,30 @@ export const categories = [
 ]
 
 const Categories = () => {
-  const params = useSearchParams();
-  const category = params?.get('category');
-  const pathname = usePathname();
+    const params = useSearchParams();
+    const category = params?.get('category');
+    const pathname = usePathname();
 
-  const isMainPage = pathname === '/';
+    const isMainPage = pathname === '/';        // This makes it so the URL pathname goes away on second click and brings you back to /
 
-  if (!isMainPage) {
-    return null;
-  }
+    if (!isMainPage) {
+        return null;
+    }
 
-  return (
-    <Container>
-        <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
-            {categories.map((item) => (
-                <CategoryBox 
-                    key={item.label}
-                    label={item.label}
-                    selected={category === item.label}
-                    icon={item.icon}
-                />
-            ))}
-        </div>
-    </Container>
-  );
+    return (
+        <Container>
+            <div className="pt-4 flex flex-row items-center justify-between overflow-x-auto">
+                {categories.map((item) => (                     // Mapping categories into CategoryBox's for the top bar
+                    <CategoryBox
+                        key={item.label}
+                        label={item.label}
+                        selected={category === item.label}
+                        icon={item.icon}
+                    />
+                ))}
+            </div>
+        </Container>
+    );
 }
 
 export default Categories;

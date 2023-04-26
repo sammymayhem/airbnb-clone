@@ -2,6 +2,7 @@
 
 import { BiSearch } from 'react-icons/bi'
 
+// One click search option at the top of the page
 const Search = () => {
   return (
     <div className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor-pointer">

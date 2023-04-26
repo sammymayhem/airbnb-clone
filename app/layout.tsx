@@ -12,6 +12,7 @@ export const metadata = {
   description: 'Airbnb clone',
 }
 
+// Importing Nunito font from Google
 const font = Nunito({
   subsets: ['latin'],
   weight: '400',
@@ -25,9 +26,10 @@ export default async function RootLayout({
 
   const currentUser = await getCurrentUser();
   
+  // Creates the structure for the top bar and makes it so that it only shows when not logged in
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={font.className}>  
         <ClientOnly>
           <ToasterProvider />
           <LoginModal />

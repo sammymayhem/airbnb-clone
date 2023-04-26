@@ -14,6 +14,7 @@ interface InputProps {
     errors: FieldErrors
 }
 
+// Creating the input parameters for the Login and Sign up fields
 const Input: React.FC<InputProps> = ({
     id,
     label,

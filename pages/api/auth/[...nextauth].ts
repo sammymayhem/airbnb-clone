@@ -7,6 +7,7 @@ import bcrypt from 'bcrypt';
 
 import prisma from '@/app/libs/prismadb';
 
+// Creating the options for OAuth login with Google or GitHub
 export const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -25,11 +26,11 @@ export const authOptions: AuthOptions = {
                 password: { label: 'password', type: 'password' },
             },
             async authorize(credentials) {
-                if (!credentials?.email || !credentials?.password) {
+                if (!credentials?.email || !credentials?.password) {        // Check to make sure email and password are in the database
                     throw new Error('Invalid Credentials');
                 }
 
-                const user = await prisma.user.findUnique({
+                const user = await prisma.user.findUnique({                 // Search database for user matching email
                     where: {
                         email: credentials.email
                     }
@@ -38,13 +39,14 @@ export const authOptions: AuthOptions = {
                 if (!user || !user?.hashedPassword) {
                     throw new Error("Invalid credentials");
                 }
-
+                
+                // Compares the password entered with the hashed password for authentication
                 const isCorrectPassword = await bcrypt.compare(
                     credentials.password,
                     user.hashedPassword
                 );
 
-                if (!isCorrectPassword) {
+                if (!isCorrectPassword) {                                   // Check to see if password matches
                     throw new Error('Invalide credentials')
                 }
 
@@ -53,7 +55,7 @@ export const authOptions: AuthOptions = {
         })
     ],
     pages: {
-        signIn: '/',
+        signIn: '/',                    // If signin fails, goes back to homepage
     },
     debug: process.env.NODE_ENV === 'development',
     session: {

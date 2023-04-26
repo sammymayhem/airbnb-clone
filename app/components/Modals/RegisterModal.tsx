@@ -37,6 +37,7 @@ const RegisterModal = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
+        // Route for adding a user to the database
         axios.post('/api/register', data)
             .then(() => {
                 registerModal.onClose();
@@ -49,6 +50,7 @@ const RegisterModal = () => {
             })
     }
 
+    // Body of card holding the Register in put fields
     const bodyContent = (
         <div className='flex flex-col gap-4'>
             <Heading title='Welcome to Airbnb' subtitle='Create an account!' />
@@ -76,7 +78,8 @@ const RegisterModal = () => {
                 required />
         </div>
     )
-
+    
+    // Footer that holds the OAuth register through Google or GitHub
     const footerContent = (
         <div className='flex flex-col gap-4 mt-3'>
             <hr />

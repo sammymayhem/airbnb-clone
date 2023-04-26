@@ -11,6 +11,7 @@ interface ButtonProps {
     icon?: IconType;
 }
 
+// Reusable button component
 const Button: React.FC<ButtonProps> = ({
     label,
     onClick,

@@ -8,7 +8,7 @@ import qs from 'query-string';
 interface CategoryBoxProps {
     icon: IconType;
     label: string;
-    selected?: boolean; 
+    selected?: boolean;
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
@@ -48,10 +48,10 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         router.push(url);
     }, [label, params, router]);
 
-  return (
-    <div 
-        onClick={handleClick}
-        className={`
+    return (
+        <div
+            onClick={handleClick}
+            className={`
             flex 
             flex-col 
             items-center 
@@ -65,12 +65,12 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
             ${selected ? 'border-b-neutral-800' : 'border-transparent'}
             ${selected ? 'text-neutral-800' : 'text-neutral-500'}
     `}>
-      <Icon size={26} />
-      <div className="font-medium text-sm">
-        {label}
-      </div>
-    </div>
-  )
+            <Icon size={26} />
+            <div className="font-medium text-sm">
+                {label}
+            </div>
+        </div>
+    )
 }
 
 export default CategoryBox;
