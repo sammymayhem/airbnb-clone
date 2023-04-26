@@ -25,7 +25,14 @@ export default async function getCurrentUser() {
             return null;
         }
 
-        return currentUser;
+        // Modified the way these fields were exported. Using types/index.js
+        return {
+            ...currentUser,
+            createdAt: currentUser.createdAt.toISOString(),
+            updateAt: currentUser.updateAt.toISOString(),
+            emailVerified: currentUser.emailVerified?.toISOString() || null,
+        };
+
     } catch (error: any) {
         return null;
     }
