@@ -9,6 +9,8 @@ import Heading from "../Heading";
 import { categories } from "../Navbar/Categories";
 import CategoryInput from "../inputs/CategoryInput";
 import CountrySelect from "../inputs/CountrySelect";
+import Map from "../Map";
+import dynamic from "next/dynamic";
 
 enum STEPS {
     CATEGORY = 0,
@@ -51,6 +53,12 @@ const RentModal = () => {
 
     // Workaround because of the custom CategoryInput
     const category = watch('category');
+    const location = watch('location');
+
+    // Because the map I am using is not completely supported by React, I needed to dynamically import the Map component and render it each time a location is selected
+    const Map = useMemo(() => dynamic(() => import('../Map'), {
+        ssr: false
+    }), [location]);
 
     // setValue does not rerender the page with React Hooks, this workaround will take of that
     const setCustomValue = (id: string, value: any) => {
@@ -99,7 +107,7 @@ const RentModal = () => {
                 {categories.map((item) => (
                     <div key={item.label} className="col-span-1">
                         <CategoryInput 
-                            onClick={(category) => setCustomValue('category', category)}
+                            onClick={(category) => setCustomValue('category', category)}        // Using the ID of category and the category selected
                             selected={category === item.label}
                             label={item.label}
                             icon={item.icon}
@@ -118,7 +126,11 @@ const RentModal = () => {
                     subtitle="Help guests find you!"
                 />
                 <CountrySelect 
-
+                    value={location}
+                    onChange={(value) => setCustomValue('location', value)}     // Using the ID of location and the value selected
+                />
+                <Map
+                    center={location?.latlng}
                 />
             </div>
         )
