@@ -38,7 +38,7 @@ const RentModal = () => {
     } = useForm<FieldValues>({
         defaultValues: {
             category: '',
-            location: null,
+            location: null,     // Because this will be an object
             guestCount: 1,
             roomCount: 1,
             bathroomCount: 1,
@@ -55,9 +55,9 @@ const RentModal = () => {
     // setValue does not rerender the page with React Hooks, this workaround will take of that
     const setCustomValue = (id: string, value: any) => {
         setValue(id, value, {
+            shouldValidate: true,
             shouldDirty: true,
             shouldTouch: true,
-            shouldValidate: true,
         });
     };
 

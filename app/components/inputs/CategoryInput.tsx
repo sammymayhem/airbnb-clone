@@ -38,4 +38,4 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
   )
 }
 
-export default CategoryInput
+export default CategoryInput;
