@@ -10,6 +10,7 @@ interface EmptyState {
     showReset?: boolean;
 }
 
+// This will remove all filters from the search and bring you back to the home state
 const EmptyState: React.FC<EmptyState> = ({
     title = "No exact matches",
     subtitle = "Try changing or removing some of your filters",
