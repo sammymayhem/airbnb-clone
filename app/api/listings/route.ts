@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import prisma from '@/app/libs/prismadb';
 import getCurrentUser from "@/app/actions/getCurrentUser";
 
+// Route to post listings into the prisma database
 export async function POST(
     request: Request
 ) {
