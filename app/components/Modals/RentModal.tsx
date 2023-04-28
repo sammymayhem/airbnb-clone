@@ -118,7 +118,7 @@ const RentModal = () => {
     // Offers the user to create listing since Price is the end
     const actionLabel = useMemo(() => {
         if (step === STEPS.PRICE) {
-            return 'choice';
+            return 'Create';
         }
 
         return 'Next';
