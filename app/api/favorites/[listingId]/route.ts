@@ -7,7 +7,7 @@ interface IParams {
     listingId?: string;
 }
 
-// ADD favorites function
+// ADD favorites function | Route handlers cannot be export default with this routing system
 export async function POST(
     request: Request,
     { params }: { params: IParams }

@@ -12,6 +12,7 @@ interface IUseFavorite {
     currentUser?: SafeUser | null;
 }
 
+// Hook for tracking and marking favorited listings for a user
 const useFavorite = ({
     listingId,
     currentUser
@@ -25,6 +26,7 @@ const useFavorite = ({
         return list.includes(listingId);
     }, [currentUser, listingId]);
 
+    // Used to toggle the heard from filled to empty depending on if the listing is in their favorites
     const toggleFavorite = useCallback(async (
         e: React.MouseEvent<HTMLDivElement>
     ) => {
