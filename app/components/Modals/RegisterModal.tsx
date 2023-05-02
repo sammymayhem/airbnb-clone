@@ -44,7 +44,9 @@ const RegisterModal = () => {
         // Route for adding a user to the database
         axios.post('/api/register', data)
             .then(() => {
+                toast.success('Success!')
                 registerModal.onClose();
+                loginModal.onOpen();        // After successfully registering user will be prompted to login
             })
             .catch((error) => {
                 toast.error('Something went wrong');
