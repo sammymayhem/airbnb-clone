@@ -6,8 +6,6 @@ import EmptyState from "@/app/components/EmptyState";
 import ClientOnly from "./components/ClientOnly";
 import Container from "@/app/components/Container";
 
-export const dynamic = 'force-dynamic'
-
 interface HomeProps {
   searchParams: IListingsParams
 }
@@ -55,3 +53,4 @@ const Home = async ({ searchParams }: HomeProps) => {
 }
 
 export default Home;
+export const dynamic = 'force-dynamic'
