@@ -3,8 +3,10 @@ import getListings, { IListingsParams } from "@/app/actions/getListings";
 import ListingCard from "@/app/components/listings/ListingCard";
 import EmptyState from "@/app/components/EmptyState";
 
-import ClientOnly from "@/app/components/ClientOnly";
+import ClientOnly from "./components/ClientOnly";
 import Container from "@/app/components/Container";
+
+export const dynamic = 'force-dynamic'
 
 interface HomeProps {
   searchParams: IListingsParams

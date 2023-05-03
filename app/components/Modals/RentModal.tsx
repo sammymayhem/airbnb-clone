@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 
 import useRentModal from "@/app/hooks/useRentModal";
+
 import Modal from "./Modal";
 import Heading from "../Heading";
 import { categories } from "../Navbar/Categories";
