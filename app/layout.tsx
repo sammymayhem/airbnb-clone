@@ -21,6 +21,7 @@ export const metadata = {
 const font = Nunito({
   subsets: ['latin'],
   weight: '400',
+  display: 'swap',
 })
 
 export default async function RootLayout({
